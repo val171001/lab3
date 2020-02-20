@@ -31,6 +31,12 @@ $ sudo stap profiler.stp
 
 - ¿Cómo funciona SystemTap?
 
+    1. Busca las librerias de tapser
+    2. SytemTap traduce el script a c, corre  el compilador de  del sistema para crear un modulo del kernel.
+    3. SystemTap carga el modulo del kernel, y activa los `probes`
+    4. Los eventos ocurren, y los handlers se ejecutan
+    5. Cuando se ha terminado, se desactivan los probes y el modulo del kernel es descargado.
+
     [Articulo redhat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/systemtap_beginners_guide/understanding-how-systemtap-works)
 
 - ¿Qué es hacer profiling y qué tipo de profiling se hace en este ejercicio?
