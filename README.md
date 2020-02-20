@@ -98,3 +98,51 @@ $ sudo stap profiler.stp
 - Usted  ha  logrado  crear,  cargar  y  descargar  un  módulo  de  Linux.  ¿Qué poder  otorga  el ejecutar código de esta forma?
 
     Concede permisos en el espacio del kernel, es decir se tiene las funciones que el kernel puede ejecutar. Cabe mencionar la facilidad de cargar los modulos al sistema para reducir el tiempo de desarrollo/deploy.
+
+## Ejercicio 3 
+ - ¿Qué es y para qué sirve el archivo fstab?
+
+    Es la tabla del sistema de archivos del sistema operativo, se utiliza para *montar* dispositivos con sistemas de archivos de manera automatica, o en un orden personalizado.
+
+- ¿Qué almacena el directorio /etc? ¿En Windows, quién (hasta cierto punto) funge como /etc?
+
+    En su mayoria almacena archivos de configuracion (tablas de configuracion, configuraciones ejectables, *etc*), aunque tambien incluye archivos allow/deny para dar permisos de acceso.
+
+    En windows podria llamarse 'equivalente' a system32
+
+- ¿Qué se almacena en `/dev` y en `/dev/disk`?
+
+    En `/dev` se almacena los archivos de dispositivos (Los dispositivos contectados son representados como un archivo). En `/dev/disk` se almacena los archivos de los dispositivos que son reconocidos como discos.
+
+- ¿Por qué se usa <la dirección completadel link hacia sda>en lugar de sólo /dev/sda, y cuál es el papel que el programa `udev `cumple en todo esto?
+
+    Se utiliza como un identificador al dispositivo fisico, y el punto en donde se accede. Estos links estan basados en el nombre de los dispositivos, por lo que es mas sencillo identificarlos. `udev` es el administrador de dispositivos del kernel de linux, este es el encargado de crear los nodos de disko (links) en `/dev/disk/by-id`.
+
+- ¿Qué  es  un block  devicey  qué significado  tiene sdxN,  dondexes  una  letra  yNes  un número, en direcciones como /dev/sdb?Investiguey expliquelos conceptos de Master Boot Record(MBR) y Volume Boot Rercord(VBR), y su relación con UEFI.
+
+    Son dispositivos virtuales ques solo dan acceso a el hardware por bloques. Se pueden conocer como particiones logicas. MBR y VBR son las particiones de booteo.
+
+- ¿Qué es hacer chain loading?
+
+    Chain loading es reemplazar un programa que se esta ejecutando por uno nuevo.
+
+- ¿Qué   se   estáindicando   con   la   configuraciónroot=”<el  file  system anotado>”?
+
+    Se indica donde se esta montando la raiz del sistema de archivos.
+
+- ¿Qué es vmlinuz?
+
+    Es el archivo ejecutable del kernel de linux. Se encuentra comprimido y es booteable.
+
+
+### Funcionamiento con GRUB
+![grub](./images/grub.png)
+
+### Funcionamiento con LILO
+![lilo](./images/lilo.png)
+
+### Diferencias entre Grub y Lilo
+
+ 1. Lilo no tienen la capacidad de arrancar desde una red, mientras que grub si.
+ 2. Al agregar un nuevo sistema operativo, lilo se debe de configurar manualmente, mientras que grubes configurado de maneradinamica.
+ 3. A lilo se le debe de espicificar donde se encuentra en archivo del kernel, mientras que grub es capaz de encontrarlo.
